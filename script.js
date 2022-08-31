@@ -1,7 +1,11 @@
 const container = document.querySelector('.container');
+var ROWS = prompt('number');
 
-for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
+
+container.style.gridTemplateColumns = 'repeat(' + ROWS + ', auto)';
+
+for (let i = 0; i < ROWS; i++) {
+    for (let j = 0; j < ROWS; j++) {
         const gridPoint = document.createElement('div');
         container.append(gridPoint);
         gridPoint.classList.add('off');
@@ -11,10 +15,13 @@ for (let i = 0; i < 4; i++) {
 const gridPoints = document.querySelectorAll('.container > div');
 
 gridPoints.forEach((gridPoint) => {
+
     gridPoint.addEventListener('mouseenter', () => {
-        gridPoint.classList.add('on');
+        gridPoint.classList.toggle('on');
     })
     gridPoint.addEventListener('mouseleave', () => {
-        gridPoint.classList.remove('on');
+        gridPoint.classList.toggle('on');
     })
 })
+
+console.log(window.getComputedStyle(container).width);

@@ -7,30 +7,36 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
     flex-direction: column;
-    background-color: #9d96b8;
-    gap: 3vh;
 }
 
 .header {
-    text-align: center;
-    font-size: 10vh;
+    font-size: 8vh;
     font-family: "Lucida Console", "Monaco", monospace;
     font-weight: bolder;
+    color: #5e5e5e;
 }
 
 button {
     font-size: 3vh;
+    background-color: white;
+    padding: 0.4em;
+    color: #4392f1;
+    border-radius: 10px;
+    border: 3px solid #5e5e5e;
+    font-weight: bold;
 }
 
 .container {
-    flex: 1;
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    background-color: #7c5869;
+    width: 100vmin;
+    height: 80vmin;
+    background-color: #5e5e5e;
+    grid-template-columns: repeat(4, auto);
+    border: 3px solid #5e5e5e;
     gap: 1px;
-    padding: 50px;
-    margin: 10vh;
 }
 
 .off {
@@ -38,5 +44,5 @@ button {
 }
 
 .on {
-    background-color: grey;
+    background-color: #8070ac;
 }
