@@ -1,40 +1,56 @@
 const container = document.querySelector('.container');
 const sizeButton = document.getElementById('size');
-var ROWS = 8;
+var ROWS = 4;
 
-for (let i = 0; i < ROWS * ROWS; i++) {
-    const gridPoint = document.createElement('div');
-    container.append(gridPoint);
-    gridPoint.classList.add('off');
+function setGrid() {
+    
+    for (let i = 0; i < ROWS * ROWS; i++) {
+        const gridPoint = document.createElement('div');
+        gridPoint.classList.add('off');
+
+        gridPoint.addEventListener('mouseenter', () => {
+            gridPoint.classList.toggle('on');
+            gridPoint.classList.toggle('off');
+        });
+        gridPoint.addEventListener('mouseleave', () => {
+            gridPoint.classList.toggle('on');
+            gridPoint.classList.toggle('off');
+        });
+
+        container.append(gridPoint);
+    }
+
+    container.style.gridTemplateColumns = 'repeat(' + ROWS + ', auto)';
 }
 
-container.style.gridTemplateColumns = 'repeat(' + ROWS + ', auto)';
+setGrid();
 
 //prompt('number');
 
-var gridPoints = document.querySelectorAll('.container > div');
-
 sizeButton.addEventListener('click', () => {
+
+    const gridPoints = document.querySelectorAll('.container > div');
 
     ROWS = prompt('number');
     gridPoints.forEach(gridPoint => {
         container.removeChild(gridPoint);
     })
 
-    for (let i = 0; i < ROWS * ROWS; i++) {
-        const gridPoint = document.createElement('div');
-        container.append(gridPoint);
-        gridPoint.classList.add('off');
-    }
-
-    container.style.gridTemplateColumns = 'repeat(' + ROWS + ', auto)';
+    setGrid();
 })
 
 
 
 
+/* container.addEventListener('mouseenter', e => {
+    e.target.classList.toggle('on');
+})
+container.addEventListener('mouseleave', e => {
+    e.target.classList.toggle('on');
+}) */
 
-gridPoints.forEach(gridPoint => {
+
+/* document.querySelectorAll('.container > div').forEach(gridPoint => {
 
     gridPoint.addEventListener('mouseenter', () => {
         gridPoint.classList.toggle('on');
@@ -44,6 +60,6 @@ gridPoints.forEach(gridPoint => {
         gridPoint.classList.toggle('on');
         gridPoint.classList.toggle('off');
     })
-})
+}) */
 
 //console.log(window.getComputedStyle(container).width);
