@@ -3,8 +3,9 @@ const sizeButton = document.getElementById('size');
 const resetButton = document.getElementById('reset');
 var ROWS = 4;
 
-//8070ac
-
+//First chooses a random color, then creates grid points depending on how many
+//rows are input by user. Enables an event listener for each grid point that
+//increases color brightness for each mouse enter.
 function setGrid(ROWS) {
 
     let color = '#' + Math.floor(Math.random()*16777215).toString(16);
@@ -13,7 +14,6 @@ function setGrid(ROWS) {
 
         const gridPoint = document.createElement('div');
 
-        gridPoint.classList.add('gridPoint');
         gridPoint.style.filter = 'brightness(0) invert(1)';
         gridPoint.style.backgroundColor = color;
 
@@ -29,6 +29,7 @@ function setGrid(ROWS) {
     container.style.gridTemplateColumns = 'repeat(' + ROWS + ', auto)';
 }
 
+//removes all grid points and adds them again to refresh the color values
 function reset() {
 
     const gridPoints = document.querySelectorAll('.container > div');
@@ -39,8 +40,6 @@ function reset() {
 }
 
 setGrid(ROWS);
-
-//prompt('number');
 
 sizeButton.addEventListener('click', () => {
 
@@ -57,28 +56,3 @@ resetButton.addEventListener('click', () => {
 
     setGrid(ROWS);
 });
-
-
-
-
-/* container.addEventListener('mouseenter', e => {
-    e.target.classList.toggle('on');
-})
-container.addEventListener('mouseleave', e => {
-    e.target.classList.toggle('on');
-}) */
-
-
-/* document.querySelectorAll('.container > div').forEach(gridPoint => {
-
-    gridPoint.addEventListener('mouseenter', () => {
-        gridPoint.classList.toggle('on');
-        gridPoint.classList.toggle('off');
-    })
-    gridPoint.addEventListener('mouseleave', () => {
-        gridPoint.classList.toggle('on');
-        gridPoint.classList.toggle('off');
-    })
-}) */
-
-//console.log(window.getComputedStyle(container).width);
