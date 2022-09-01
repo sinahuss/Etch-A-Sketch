@@ -45,6 +45,11 @@ sizeButton.addEventListener('click', () => {
 
     ROWS = prompt('Set the number of squares on each side');
 
+    if (isNaN(ROWS) || ROWS <= 0 || ROWS > 100) {
+        alert('Please enter a number between 0 and 100')
+        return;
+    }
+
     reset();
 
     setGrid(ROWS);
