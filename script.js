@@ -1,10 +1,13 @@
 const container = document.querySelector('.container');
 const sizeButton = document.getElementById('size');
+const resetButton = document.getElementById('reset');
 var ROWS = 4;
 
 //8070ac
 
-function setGrid() {
+function setGrid(ROWS) {
+
+    let color = '#' + Math.floor(Math.random()*16777215).toString(16);
     
     for (let i = 0; i < ROWS * ROWS; i++) {
 
@@ -12,6 +15,7 @@ function setGrid() {
 
         gridPoint.classList.add('gridPoint');
         gridPoint.style.filter = 'brightness(0) invert(1)';
+        gridPoint.style.backgroundColor = color;
 
         container.append(gridPoint);
 
@@ -19,32 +23,40 @@ function setGrid() {
         gridPoint.addEventListener('mouseenter', () => {
             brightness += 0.1;
             gridPoint.style.filter = 'brightness(' + brightness + ') invert(1)';
-            console.log(gridPoint.style.filter[11]);
         });
     }
 
     container.style.gridTemplateColumns = 'repeat(' + ROWS + ', auto)';
 }
 
-function hover() {
+function reset() {
 
+    const gridPoints = document.querySelectorAll('.container > div');
+
+    gridPoints.forEach(gridPoint => {
+        container.removeChild(gridPoint);
+    });
 }
 
-setGrid();
+setGrid(ROWS);
 
 //prompt('number');
 
 sizeButton.addEventListener('click', () => {
 
-    const gridPoints = document.querySelectorAll('.container > div');
+    ROWS = prompt('Set the number of squares on each side');
 
-    ROWS = prompt('number');
-    gridPoints.forEach(gridPoint => {
-        container.removeChild(gridPoint);
-    })
+    reset();
 
-    setGrid();
-})
+    setGrid(ROWS);
+});
+
+resetButton.addEventListener('click', () => {
+
+    reset();
+
+    setGrid(ROWS);
+});
 
 
 
