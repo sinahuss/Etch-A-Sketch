@@ -33,16 +33,12 @@ button {
     display: grid;
     width: 100vmin;
     height: 80vmin;
-    background-color: #5e5e5e;
     grid-template-columns: repeat(4, auto);
-    border: 3px solid #5e5e5e;
-    gap: 1px;
+    background-color: black;
+    border: 2px solid black;
+    gap: 2px;
 }
 
-.off {
-    background-color: white;
-}
-
-.on {
-    background-color: #8070ac;
+.gridPoint {
+    background-color: rgb(128, 112, 172);
 }
